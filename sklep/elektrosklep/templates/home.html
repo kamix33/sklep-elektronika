@@ -1,0 +1,29 @@
+{% extends "base.html" %}
+
+{% block content %}
+<h2 style="text-align: center;">Produkty</h2>
+
+<div class="product-grid">
+  {% for produkt in produkty %}
+    <div class="product-card">
+      <div class="product-content">
+        {% if produkt.obrazek %}
+          <img src="{{ produkt.obrazek.url }}" alt="{{ produkt.nazwa }}" style="width:100%; height:auto;">
+        {% endif %}
+        <h3>{{ produkt.nazwa }}</h3>
+        <p>{{ produkt.opis|truncatechars:100 }}</p>
+        <p><strong>Cena: </strong>{{ produkt.cena }} zł</p>
+      </div>
+
+      <div class="product-actions">
+        <form action="{% url 'dodaj_do_koszyka' produkt.id %}" method="post">
+          {% csrf_token %}
+          <button type="submit" class="btn-add-cart">Dodaj do koszyka</button>
+        </form>
+      </div>
+    </div>
+  {% empty %}
+    <p>Brak produktów.</p>
+  {% endfor %}
+</div>
+{% endblock %}

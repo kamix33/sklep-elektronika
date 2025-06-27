@@ -1,0 +1,12 @@
+{% extends "base.html" %}
+
+{% block content %}
+<h2 style="text-align: center;">Dziękujemy za złożenie zamówienia!</h2>
+
+<p style="text-align: center;">Numer zamówienia: {{ numer_zamowienia }}</p>
+<p style="text-align: center;">Data: {{ data_zamowienia|date:"d-m-Y H:i" }}</p>
+
+<div style="text-align: center;">
+  <button onclick="location.href='{% url 'home' %}'">Wróć do sklepu</button>
+</div>
+{% endblock %}

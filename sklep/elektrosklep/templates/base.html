@@ -1,0 +1,60 @@
+{% load static %}
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Sklep z elektroniką</title>
+    <link rel="stylesheet" href="{% static 'style.css' %}">
+</head>
+
+<body>
+    <nav>
+        <div class="nav-left">
+            <a href="/">Produkty</a>
+            <a href="/koszyk">Koszyk</a>
+        </div>
+
+        <div class="nav-center">
+            <img src="{% static 'logo.svg' %}" alt="Logo ElektroSklep" style="height:40px;">
+            {% if user.is_authenticated %}
+            <span style="font-size: medium;">Witaj, {{ user.username }}</span>
+            {% endif %}
+        </div>
+
+        <div class="nav-right">
+            {% if user.is_authenticated %}
+            {% if user.is_staff %}
+            <a href="/admin">Panel Administratora</a>
+            {% endif %}
+            <form action="{% url 'logout' %}" method="post" style="display:inline;">
+                {% csrf_token %}
+                <button type="submit" class="link-button">Wyloguj</button>
+            </form>
+            {% else %}
+            <a href="{% url 'login' %}">Zaloguj</a>
+            <a href="{% url 'rejestracja' %}">Rejestracja</a>
+            {% endif %}
+        </div>
+    </nav>
+
+    <main class="container">
+        
+        {% block content %}{% endblock %}
+
+         {% if messages %}
+  <div class="messages">
+    {% for message in messages %}
+      <div class="alert {% if message.tags %}alert-{{ message.tags }}{% endif %}">
+        {{ message }}
+      </div>
+    {% endfor %}
+  </div>
+{% endif %}
+    </main>
+
+    <footer>
+        © 2025 Sklep Elektroniczny
+    </footer>
+</body>
+
+</html>

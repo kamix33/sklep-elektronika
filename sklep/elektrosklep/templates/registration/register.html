@@ -1,0 +1,17 @@
+{% extends "base.html" %}
+
+{% block content %}
+<h2 style="text-align: center;">Rejestracja</h2>
+
+<form method="post" class="order-form">
+  {% csrf_token %}
+
+  {{ form.username }}
+  {{ form.email }}
+  {{ form.password1 }}
+  {{ form.password2 }}
+  <button type="submit">Zarejestruj się</button>
+  <p>Masz już konto? <a href="{% url 'login' %}">Zaloguj się</a></p>
+</form>
+
+{% endblock %}

@@ -1,0 +1,19 @@
+{% extends "base.html" %}
+{% block content %}
+<h2 style="text-align: center;">Zamówienie</h2>
+
+<form method="post" class="order-form">
+  {% csrf_token %}
+
+  {{ form.imie }}
+  {{ form.nazwisko }}
+  {{ form.adres }}
+  {{ form.kod_pocztowy }}
+  {{ form.miasto }}
+  {{ form.forma_dostawy }}
+
+  <div style="text-align: center;">
+    <button type="submit">Zamawiam</button>
+  </div>
+</form>
+{% endblock %}

@@ -1,0 +1,13 @@
+<svg width="180" height="40" viewBox="0 0 180 40" xmlns="http://www.w3.org/2000/svg">
+  <!-- Symbol: stylizowany chip elektroniczny -->
+  <rect x="10" y="8" width="24" height="24" fill="white" rx="4" ry="4"></rect>
+  
+  <!-- Piny chipu -->
+  <line x1="10" y1="14" x2="2" y2="14" stroke="white" stroke-width="2"></line>
+  <line x1="10" y1="26" x2="2" y2="26" stroke="white" stroke-width="2"></line>
+  <line x1="34" y1="14" x2="42" y2="14" stroke="white" stroke-width="2"></line>
+  <line x1="34" y1="26" x2="42" y2="26" stroke="white" stroke-width="2"></line>
+
+  <!-- Nazwa sklepu -->
+  <text x="50" y="27" fill="white" font-family="Arial, sans-serif" font-weight="bold" font-size="20">ElektroSklep</text>
+</svg>

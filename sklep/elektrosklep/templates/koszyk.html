@@ -1,0 +1,43 @@
+{% extends "base.html" %}
+
+{% block content %}
+<h2 style="text-align: center;">Twój koszyk</h2>
+
+{% if pozycje %}
+<table>
+  <thead>
+    <tr>
+      <th>Produkt</th>
+      <th>Ilość</th>
+      <th>Cena za szt.</th>
+      <th>Wartość</th>
+    </tr>
+  </thead>
+  <tbody>
+    {% for pozycja in pozycje %}
+    <tr>
+      <td>{{ pozycja.produkt.nazwa }}</td>
+      <td>{{ pozycja.ilosc }}</td>
+      <td>{{ pozycja.produkt.cena }} zł</td>
+      <td>{{ pozycja.wartosc|floatformat:2 }} zł</td>
+    </tr>
+    {% endfor %}
+    <tr>
+      <td colspan="3"><strong>Razem:</strong></td>
+      <td><strong>{{ suma }} zł</strong></td>
+    </tr>
+  </tbody>
+</table>
+
+<form action="{% url 'zamowienie' %}" method="post">
+  {% csrf_token %}
+  <div style="text-align: center;">
+    <button type="submit">Zamawiam</button>
+  </div>
+</form>
+
+{% else %}
+<p>Twój koszyk jest pusty.</p>
+{% endif %}
+
+{% endblock %}
